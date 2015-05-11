@@ -1,0 +1,14 @@
+general idea:
+more personalized trip advisor/yelp for reviews
+reviews are filtered on those matching your demographics/interests
+
+
+
+
+user stories
+user will be able to sign in with facebook/google plus
+user will create a profile(hopefully with most of the info coming from the social network login)
+the user can search for a city
+the site will link to external apis(yelp, tripadvisor, foursquar, etc)
+the user can find reviews based on venue type i.e. restaurant, tourist site, bar, etc
+the user can filter based on reviews from profiles matching their profile(age, interests)
