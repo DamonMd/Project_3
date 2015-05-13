@@ -13,3 +13,48 @@
  *= require_tree .
  *= require_self
  */
+ body{
+   text-align: center;
+ }
+ .video{
+   position: relative;
+   min-width: 100%;
+   min-height: 100%;
+   width: auto;
+   height: auto;
+   z-index: -1;
+   /*background: url(https://a1.muscache.com/locations/uploads/city/hero/23/356_3834_552_2361_hero_USA_WashingtonDC_Skyline_CKW-22.jpg)no-repeat;
+   background-size:cover;*/
+ }
+ .content{
+   position: absolute;
+   /*margin: 0 auto;*/
+   top: 50%;
+   left: 450px;
+   padding: 30px;
+   color: white;
+   border-radius:36px;
+   border-color:white;
+   border-width:2px;
+   border-style:solid;
+   background-color:transparent;
+   color:white;
+   opacity:0.7;
+   transition: background-color .1s, opacity .2s;
+ }
+#start{
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  margin: 0 auto;
+  width: 200px;
+  color: white;
+  border-radius:36px;
+  border-color:white;
+  border-width:2px;
+  border-style:solid;
+  background-color:transparent;
+  opacity:0.7;
+  transition: background-color .1s, opacity .2s;
+}
+#map-canvas { height: 50%; width: 50%; padding: 0;}

@@ -4,14 +4,16 @@ class HomeController < ApplicationController
   end
 
   def search
-    location = params[:location]
-    parameters = { term: params[:term], limit: 1 }
-    @results = Yelp.client.search(location, parameters)
-    render json: @results
-    # respond_to do |format|
-    #   format.html { render :index }
-    #   format.json { render json: @results }
-    # end
+    location = params[:location].split
+    location_search = location.join("+")
+    parameters = { term: params[:term], sort: 2, limit: 5 }
+    initial_search = Yelp.client.search(location_search, parameters)
+    @results= initial_search.businesses
+    # render json: @results
+    respond_to do |format|
+      format.html { render :search }
+      format.json { render json: @results }
+    end
   end
 
 

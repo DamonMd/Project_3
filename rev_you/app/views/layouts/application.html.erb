@@ -5,27 +5,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <style>
-    .video{
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      /*background: url(https://a1.muscache.com/locations/uploads/city/hero/23/356_3834_552_2361_hero_USA_WashingtonDC_Skyline_CKW-22.jpg)no-repeat;
-      background-size:cover;*/
-    }
+  <style type="text/css">
+  html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
   </style>
 
 </head>
 <body>
-<%= video_tag(["Hollywood Dolby Theatre Night.mp4"]) %>
-<!-- <video src='../../assets/videos/yosemite_sprint_2014_hd_stock_video.mp4' autoplay='true' loop='true' mute='true' ></video> -->
 
-  <div id="user_nav">
-    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
-  </div>
+
 
 <%= yield %>
+
 
 </body>
 </html>
