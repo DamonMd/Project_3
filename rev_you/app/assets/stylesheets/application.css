@@ -44,9 +44,12 @@
  }
 #start{
   position: absolute;
+  /*vertical-align:middle;
+  margin-left:auto;
+  margin-right:auto;*/
   top: 200px;
   left: 600px;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   width: 200px;
   color: white;
   border-radius:36px;

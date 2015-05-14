@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   end
 
   def self.create_from_auth auth
-    create(uid: auth.id, provider: auth.provider, name: auth.info.name)
+    create(uid: auth.id, provider: auth.provider, name: auth.info.name, email: auth.info.email, image: auth.info.image, url: auth.info.facebook.url)
   end
 end

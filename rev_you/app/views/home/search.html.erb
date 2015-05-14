@@ -2,53 +2,80 @@
 
 <div class="results">
 <% @results.each do |result| %>
-  <% counter = 1 %>
   <div id='result-image'><img src='<%= result.image_url %>'></div>
-  <div id='result-name' number = "<%= counter %>"><a href='<%= result.url %>'><%= result.name %></a></div>
+  <div id='result-name' ><a href='<%= result.url %>'><%= result.name %></a></div>
   <div id='result-rating'><img src = "<%= result.rating_img_url_large %>"><span>Number of Reviews: <%= result.review_count %></span></div>
-  <% counter = counter + 1 %>
   <%= result.rating %>
   <%= result.snippet_text %>
   <%= result.location.city %>
+  <div id="latitude"><%= result.location.coordinate.latitude %></div>
+  <div id="longitude"><%= result.location.coordinate.longitude %></div>
+  <div id="name"><%= result.name %></div>
   <br>
 <% end %>
 </div>
 
-<!-- <iframe
-   width="600"
-   height="450"
-   frameborder="0" style="border:0"
-   src= url >
- </iframe> -->
+
 
  <script type="text/javascript"
      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuf46lcqSNpCDlmoIP0BGz4d2bnG0a4rk">
    </script>
     <script type="text/javascript">
-    var stockholm = new google.maps.LatLng(59.32522, 18.07002);
-    var parliament = new google.maps.LatLng(59.327383, 18.06747);
+    // var stockholm = new google.maps.LatLng(59.32522, 18.07002);
+    // var parliament = new google.maps.LatLng(59.327383, 18.06747);
+    // var latitude = document.querySelectorAll("#latitude")
+    // var longitude = document.querySelectorAll("#longitude")
+    // var first = new google.maps.LatLng(latitude[0].innerHTML, longitude.innerHTML[0].innerHTML)
     var marker;
     var map;
+    var markersArray = []
+    var infoArray = []
+    var latitude = document.querySelectorAll("#latitude")
+    var longitude = document.querySelectorAll("#longitude")
+    var first_lat = latitude[0].innerHTML
+    var first_long = longitude[0].innerHTML
+    var names = document.querySelectorAll("#name")
 
     function initialize() {
+      var first = new google.maps.LatLng(first_lat, first_long)
       var mapOptions = {
-        zoom: 13,
-        center: stockholm,
+        zoom: 11,
+        center: first,
 
         //this hides controls from user
         streetViewControl: false,
         panControl: false
       };
 
-      map = new google.maps.Map(document.getElementById('map-canvas'),
-              mapOptions);
+      map = new google.maps.Map(document.getElementById('map-canvas'),mapOptions);
 
-      marker = new google.maps.Marker({
-        map:map,
-        animation: google.maps.Animation.DROP,
-        position: parliament
-      });
-      google.maps.event.addListener(marker, 'click', toggleBounce);
+
+
+      for(var i = 0; i < latitude.length; i++){
+        var contentString = '<div class="box">' + names[i].innerHTML + '</div>'
+        var infowindow = new google.maps.InfoWindow({content: contentString })
+        var locale = new google.maps.LatLng(latitude[i].innerHTML, longitude[i].innerHTML)
+        marker = new google.maps.Marker({
+          map:map,
+          animation: google.maps.Animation.DROP,
+          position: locale,
+          title: names[i].innerHTML
+        });
+        markersArray.push(marker)
+        infoArray.push(infowindow)
+        // google.maps.event.addListener(marker, 'click', function(){
+        //   infowindow.open(map, marker)
+        // });
+      }
+      console.log(infoArray)
+      for(var i = 0; i < markersArray.length; i++){
+      // markersArray.forEach(function(marker){
+      var testing = infoArray[i]
+        google.maps.event.addListener(markersArray[i], 'click', function(){
+          testing.open(map, marker)
+        })
+      // })
+      }
     }
 
     function toggleBounce() {
