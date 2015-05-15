@@ -1,10 +1,10 @@
 require 'yelp'
 
 Yelp.client.configure do |config|
-  config.consumer_key = 'w9mS7t6b83s8dSpFvGIMjQ'
-  config.consumer_secret = 'oi9u4PpzpsYguKSTE3oRcSgxQqw'
-  config.token = 'ctyZSyNtBfl7mP-n6bMcKy1l6gGMtlBW'
-  config.token_secret = 'WOZkAVnZ-cvCidli-xlcWi4UtVA'
+  config.consumer_key = ENV['yelp_consumer_key']
+  config.consumer_secret = ENV['yelp_consumer_secret']
+  config.token = ENV['yelp_token']
+  config.token_secret = ENV['yelp_token_secret']
 end
 
 # config.consumer_key = YOUR_CONSUMER_KEY

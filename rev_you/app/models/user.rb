@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :favorites
+  
   def self.from_auth auth
     self.find_by( uid: auth.uid, provider: auth.provider) || self.create_from_auth( auth )
   end
