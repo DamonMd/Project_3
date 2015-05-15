@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def search
     location = params[:location].split
     location_search = location.join("+")
-    parameters = { term: params[:term], sort: 2, limit: 5 }
+    parameters = { term: params[:term], sort: 2, limit: 7 }
     initial_search = Yelp.client.search(location_search, parameters)
     @results= initial_search.businesses
     # render json: @results

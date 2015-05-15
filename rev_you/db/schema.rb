@@ -20,6 +20,10 @@ ActiveRecord::Schema.define(version: 20150512223422) do
     t.string "name"
     t.string "provider"
     t.string "uid"
+    t.string "email"
+    t.string "image"
+    t.string "url"
+    t.string "gender"
   end
 
 end

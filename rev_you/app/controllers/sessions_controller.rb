@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # binding.pry
     # raise request.env["omniauth.auth"]
     @user = User.from_auth( request.env["omniauth.auth"] )
     session[:user_id] = @user.id
