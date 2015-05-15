@@ -7,7 +7,11 @@
     <h2>Search Results</h2>
       <% @results.each do |result| %>
         <div class="result">
-          <img id="photo" src='<%= result.image_url %>'>
+          <% if result.image_url.length > 1 %>
+            <img id="photo" src='<%= result.image_url %>'>
+          <% else %>
+            <img id="photo" scr='http://vignette3.wikia.nocookie.net/clubpenguinpookie/images/d/d0/Extremely-cute-kitten_large.jpg/revision/latest?cb=20140614000321'>
+          <% end %>
           <a id="yelp-url"href='<%= result.url %>'><%= result.name %></a>
           <p><img src = "<%= result.rating_img_url %>"></p>
           <%= result.rating %>
@@ -40,6 +44,8 @@
 // var infoArray = []
 var map
 var infowindow
+// storing all my ruby code above because i'm a dummy and didn't
+// know you could pass an instance variable to JS
 var latitudes = document.querySelectorAll("#latitude")
 var longitudes = document.querySelectorAll("#longitude")
 var names = document.querySelectorAll("#name")
@@ -65,6 +71,7 @@ function initialize() {
 
   infowindow = new google.maps.InfoWindow()
 
+  //loop through my arrays to crate new markers and the info for the pop-up window
   for(var i = 0; i < latitude.length; i++){
     var locale = new google.maps.LatLng(latitudes[i].innerHTML, longitudes[i].innerHTML)
     var locale_name = names[i].innerHTML
@@ -83,8 +90,8 @@ function initialize() {
       })
 
       google.maps.event.addListener(r, 'click', function() {
-        infowindow.setContent(content);
-        infowindow.open(map, this);
+        infowindow.setContent(content)
+        infowindow.open(map, this)
         })
         return r
     }

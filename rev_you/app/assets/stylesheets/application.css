@@ -82,7 +82,7 @@ body{
 
 .results-container{
   background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('eiffel-tower-france-landmark-5463.jpg');
-  background-size:cover;
+  background-size: cover;
   filter:contrast(50%);
   z-index: -1;
   color: white;
