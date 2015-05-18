@@ -2,13 +2,13 @@
 
 
 
-<h2>Search Here!!</h2>
+<!-- <h2>Search Here!!</h2> -->
 <!-- <div style="position: fixed; z-index: -99; width: 100%; height: 100%">
 <iframe frameborder="0" height="100%" width="100%"src="https://www.youtube.com/watch?v=YAcg6ejylL0">
 </iframe>
 </div> -->
 
-<div id='new_search'>
+<!-- <div id='new_search'>
   <input id="city" type="text" placeholder="What City do you want to search?">
   <input id="venue" type="text" placeholder="What do you want to look up? food, hotels, etc">
   <button id="search">FIND</button>
@@ -22,7 +22,7 @@
   <label for='location'>location</label>
   <input name="location">
   <input type="submit" value="Find">
-</form>
+</form> -->
 
 <!-- <iframe
    width="600"
@@ -32,14 +32,14 @@
  </iframe>  -->
 
 
-<script>
-var button = document.querySelector('#search')
-button.addEventListener('click', function(evt){
-  evt.preventDefault()
-  var activity = document.querySelector('#venue').value
-  var location = document.querySelector('#city').value
-  $.get('/search', { term: activity, location: location })
-  })
+
+<!-- // var button = document.querySelector('#search')
+// button.addEventListener('click', function(evt){
+//   evt.preventDefault()
+//   var activity = document.querySelector('#venue').value
+//   var location = document.querySelector('#city').value
+//   $.get('/search', { term: activity, location: location })
+//   })
 
 
 // $(document).ready(function(){
@@ -54,6 +54,4 @@ button.addEventListener('click', function(evt){
     // $.post('/search', { term: venue })
 //   })
 //
-// })
-
-</script>
+// }) -->

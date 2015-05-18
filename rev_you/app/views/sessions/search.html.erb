@@ -19,7 +19,6 @@
           <p><strong>Number of Reviews:</strong> <%= result.review_count %></p>
           <p>Recent Review :</p>
           <p><%= result.snippet_text %></p>
-          <!-- <p><img src="<%#= result.snippet_image_url %>"</p> -->
 
           <!-- These divs are purely for JS -->
           <div id="latitude" style="display:none"><%= result.location.coordinate.latitude %></div>
@@ -107,7 +106,7 @@ function toggleBounce() {
     marker.setAnimation(null)
   }else{
     marker.setAnimation(google.maps.Animation.BOUNCE)
-    }
+  }
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);

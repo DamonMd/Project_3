@@ -54,10 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   root to: "sessions#index"
-  # root to: "home#index"
   get "/auth/:provider/callback", to: "sessions#create"
   # post "/auth/:provider/callback" => "sessions#create"
-  post '/search' => 'home#search'
+  post '/search' => 'sessions#search'
   get "/logout", to: 'sessions#destroy'
 
 
