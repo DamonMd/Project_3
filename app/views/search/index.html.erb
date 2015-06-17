@@ -1,0 +1,39 @@
+
+ <script>
+//   window.fbAsyncInit = function() {
+//     FB.init({
+//       appId      : '854213751281806',
+//       xfbml      : true,
+//       version    : 'v2.3'
+//     });
+//   };
+//
+//   (function(d, s, id){
+//      var js, fjs = d.getElementsByTagName(s)[0];
+//      if (d.getElementById(id)) {return;}
+//      js = d.createElement(s); js.id = id;
+//      js.src = "//connect.facebook.net/en_US/sdk.js";
+//      fjs.parentNode.insertBefore(js, fjs);
+//    }(document, 'script', 'facebook-jssdk'));
+//
+</script>
+<h2>Search Here!!</h2>
+<div id='new_search'>
+  <input id="city" type="text" placeholder="What City do you want to search?">
+  <input id="venue" type="text" placeholder="What do you want to look up? food, hotels, etc">
+  <button id="search">FIND</button>
+</div>
+<script>
+$(document).ready(function(){
+  var button = $("#search")
+  button.on('click', function(evt){
+    evt.preventDefault()
+    var city = $("#city").val()
+    var venue = $("#venue").val()
+    console.log(venue)
+    console.log(city)
+    $.post('/search', { term: venue })
+  })
+
+})
+</script>
