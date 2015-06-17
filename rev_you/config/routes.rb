@@ -58,6 +58,7 @@ Rails.application.routes.draw do
   # post "/auth/:provider/callback" => "sessions#create"
   post '/search' => 'sessions#search'
   get "/logout", to: 'sessions#destroy'
+  resources :favorites
 
 
 

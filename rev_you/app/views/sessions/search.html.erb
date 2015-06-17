@@ -19,7 +19,11 @@
           <p><strong>Number of Reviews:</strong> <%= result.review_count %></p>
           <p>Recent Review :</p>
           <p><%= result.snippet_text %></p>
-
+          <% if current_user %>
+            <button id="favorite_button">Add to Favorites</button>
+          <% else %>
+            <small>Sign in to add to your favorites</small>
+          <% end %>
           <!-- These divs are purely for JS -->
           <div id="latitude" style="display:none"><%= result.location.coordinate.latitude %></div>
           <div id="longitude" style="display:none"><%= result.location.coordinate.longitude %></div>
@@ -27,6 +31,9 @@
           <div id="js-image" style="display:none"><%= result.image_url %></div>
           <div id="url" style="display:none"><%= result.url %></div>
           <div id="stars" style="display:none"><%= result.rating_img_url %></div>
+          <% if current_user %>
+            <div id="user_id" style="display:none"><%= current_user.id %></div>
+          <% end %>
        </div>
       <% end %>
 </div>
@@ -38,11 +45,43 @@
 
 <script type="text/javascript">
 
-// var marker;
+// this selects all the favorite buttons that were created //
+var favorites = document.querySelectorAll("#favorite_button")
+
+// here i loop over each button and add an event listener with an ajax request //
+for(var i = 0; i < favorites.length; i++) {
+  var names = document.querySelectorAll("#name")
+  var name = names[i].innerHTML
+  var user = document.querySelector("#user_id").innerHTML
+  var fav = favorites[i]
+  favorite_listener(fav, name, user)
+}
+
+
+function favorite_listener(favorite, name, user){
+  var place_name = name
+  var user_id = user
+  var favorite_button = favorite
+  favorite_button.addEventListener('click', function(){
+    $.ajax({
+      type: 'POST',
+      data: { favorite: { user_id: user_id, name: place_name}},
+      dataType: 'JSON',
+      url: '/favorites'
+    }).done(function(response){
+      console.log("saved favorite")
+    }).fail(function(){
+      console.log('failed to save')
+    })
+
+  })
+}
+// var marker
 // var markersArray = []
 // var infoArray = []
 var map
 var infowindow
+
 // storing all my ruby code above because i'm a dummy and didn't
 // know you could pass an instance variable to JS
 var latitudes = document.querySelectorAll("#latitude")
@@ -56,9 +95,9 @@ var first_lat = latitudes[0].innerHTML
 var first_long = longitudes[0].innerHTML
 
 // var Favorite = function(id, url, name){
-//   this.user_id = id;
-//   this.url = description;
-//   this.completed = completed;
+//   current_user.id= id
+//   this.url = description
+//   this.name = name
 // }
 
 function initialize() {
@@ -75,7 +114,7 @@ function initialize() {
 
   infowindow = new google.maps.InfoWindow()
 
-  //loop through my arrays to crate new markers and the info for the pop-up window
+  //loop through my arrays to crate new markers and the info for the pop-up window //
   for(var i = 0; i < latitude.length; i++){
     var locale = new google.maps.LatLng(latitudes[i].innerHTML, longitudes[i].innerHTML)
     var locale_name = names[i].innerHTML

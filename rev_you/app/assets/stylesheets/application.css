@@ -29,7 +29,7 @@ body{
    position: absolute;
    /*margin: 0 auto;*/
    top: 55%;
-   left: 400px;
+   left: 350px;
    padding: 30px;
    color: white;
    border-radius:36px;
@@ -49,7 +49,7 @@ body{
   /*margin-left:auto;
   margin-right:auto;*/
   top: 245px;
-  left: 545px;
+  left: 500px;
   /*margin: 0 auto;*/
   width: 250px;
   height: 120px;
@@ -76,7 +76,7 @@ body{
 .login{
   position: absolute;
   top: 500px;
-  left: 570px;
+  left: 520px;
 }
 #map-canvas { height: 50%; width: 50%; padding: 0;}
 
@@ -137,7 +137,7 @@ h2{
 .welcome{
   position: absolute;
   top: 0px;
-  left: 330px;
+  left: 280px;
   font-family: 'Raleway', sans-serif;
   font-size: 26px;
   color: white;
