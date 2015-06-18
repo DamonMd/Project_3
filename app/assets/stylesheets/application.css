@@ -81,7 +81,7 @@ body{
 #map-canvas { height: 50%; width: 50%; padding: 0;}
 
 .results-container{
-  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('../images/eiffel-tower-france-landmark-5463.jpg');
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('eiffel-tower-france-landmark-5463.jpg');
   background-size: cover;
   filter:contrast(50%);
   z-index: -1;
